@@ -16,7 +16,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import type { AlgoUpdateO } from './algo-update-o';
+import type { AlgoUpdateAo } from './algo-update-ao';
 
 /**
  *
@@ -38,8 +38,14 @@ export interface AlgoUpdate {
     E?: number | bigint;
     /**
      *
-     * @type {AlgoUpdateO}
+     * @type {string}
      * @memberof AlgoUpdate
      */
-    o?: AlgoUpdateO;
+    fs?: string;
+    /**
+     *
+     * @type {AlgoUpdateAo}
+     * @memberof AlgoUpdate
+     */
+    ao?: AlgoUpdateAo;
 }

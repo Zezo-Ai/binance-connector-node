@@ -16,157 +16,157 @@
 /**
  *
  * @export
- * @interface AlgoUpdateO
+ * @interface AlgoUpdateAo
  */
-export interface AlgoUpdateO {
+export interface AlgoUpdateAo {
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     caid?: string;
     /**
      *
      * @type {number | bigint}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     aid?: number | bigint;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     at?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     o?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     s?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     S?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     ps?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     f?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     q?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     X?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     ai?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     ap?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     aq?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     act?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     tp?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     p?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     V?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     wt?: string;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     pm?: string;
     /**
      *
      * @type {boolean}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     cp?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     pP?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     R?: boolean;
     /**
      *
      * @type {number | bigint}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     tt?: number | bigint;
     /**
      *
      * @type {number | bigint}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     gtd?: number | bigint;
     /**
      *
      * @type {string}
-     * @memberof AlgoUpdateO
+     * @memberof AlgoUpdateAo
      */
     rm?: string;
 }

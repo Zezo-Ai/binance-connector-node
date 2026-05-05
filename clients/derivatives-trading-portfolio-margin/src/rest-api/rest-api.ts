@@ -741,7 +741,7 @@ export class RestAPI {
     /**
      * Get UM futures order download link by Id
      *
-     * Download link expiration: 24h
+     * Download link expiration: 7 days
      *
      * Weight: 10
      *
@@ -761,7 +761,7 @@ export class RestAPI {
     /**
      * Get UM futures trade download link by Id
      *
-     * Download link expiration: 24h
+     * Download link expiration: 7 days
      *
      * Weight: 10
      *
@@ -781,7 +781,7 @@ export class RestAPI {
     /**
      * Get UM futures Transaction download link by Id
      *
-     * Download link expiration: 24h
+     * Download link expiration: 7 days
      *
      * Weight: 10
      *
@@ -1756,12 +1756,6 @@ export class RestAPI {
      * BUY: `activatePrice` should be smaller than latest price.
      * SELL: `activatePrice` should be larger than latest price.
      *
-     * `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`:
-     * Follow the same rules for condition orders.
-     * If triggered, **close all** current long position( if `SELL`) or current short position( if `BUY`).
-     * Cannot be used with `quantity` paremeter
-     * Cannot be used with `reduceOnly` parameter
-     * In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side
      * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.
      *
      * Weight: 1

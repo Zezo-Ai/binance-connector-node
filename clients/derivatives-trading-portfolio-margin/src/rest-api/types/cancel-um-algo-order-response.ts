@@ -21,26 +21,8 @@
 export interface CancelUmAlgoOrderResponse {
     /**
      *
-     * @type {number | bigint}
+     * @type {boolean}
      * @memberof CancelUmAlgoOrderResponse
      */
-    algoId?: number | bigint;
-    /**
-     *
-     * @type {string}
-     * @memberof CancelUmAlgoOrderResponse
-     */
-    clientAlgoId?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof CancelUmAlgoOrderResponse
-     */
-    code?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof CancelUmAlgoOrderResponse
-     */
-    msg?: string;
+    complete?: boolean;
 }

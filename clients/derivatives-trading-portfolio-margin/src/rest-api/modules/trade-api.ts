@@ -1390,7 +1390,7 @@ const TradeApiAxiosParamCreator = function (configuration: ConfigurationRestAPI)
          * @param {string} [reduceOnly] "true" or "false". default "false". Cannot be sent in Hedge Mode .
          * @param {number} [price]
          * @param {NewCmConditionalOrderWorkingTypeEnum} [workingType] stopPrice triggered by: "MARK_PRICE", "CONTRACT_PRICE". Default "CONTRACT_PRICE"
-         * @param {string} [priceProtect] "TRUE" or "FALSE", default "FALSE". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
+         * @param {string} [priceProtect] "true" or "false", default "false". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
          * @param {string} [newClientStrategyId]
          * @param {number} [stopPrice] Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.
          * @param {number} [activationPrice] Used with `TRAILING_STOP_MARKET` orders, default as the mark price
@@ -1715,12 +1715,6 @@ const TradeApiAxiosParamCreator = function (configuration: ConfigurationRestAPI)
          * BUY: `activatePrice` should be smaller than latest price.
          * SELL: `activatePrice` should be larger than latest price.
          *
-         * `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`:
-         * Follow the same rules for condition orders.
-         * If triggered, **close all** current long position( if `SELL`) or current short position( if `BUY`).
-         * Cannot be used with `quantity` paremeter
-         * Cannot be used with `reduceOnly` parameter
-         * In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side
          * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.
          *
          * Weight: 1
@@ -1730,15 +1724,14 @@ const TradeApiAxiosParamCreator = function (configuration: ConfigurationRestAPI)
          * @param {string} symbol
          * @param {NewUmAlgoOrderSideEnum} side
          * @param {NewUmAlgoOrderTypeEnum} type `LIMIT`, `MARKET`
+         * @param {number} quantity Order quantity
          * @param {NewUmAlgoOrderPositionSideEnum} [positionSide] Default `BOTH` for One-way Mode ; `LONG` or `SHORT` for Hedge Mode. It must be sent in Hedge Mode.
          * @param {NewUmAlgoOrderTimeInForceEnum} [timeInForce]
-         * @param {number} [quantity]
          * @param {number} [price]
          * @param {number} [triggerPrice]
          * @param {NewUmAlgoOrderWorkingTypeEnum} [workingType] stopPrice triggered by: "MARK_PRICE", "CONTRACT_PRICE". Default "CONTRACT_PRICE"
          * @param {NewUmAlgoOrderPriceMatchEnum} [priceMatch] only avaliable for `LIMIT`/`STOP`/`TAKE_PROFIT` order; can be set to `OPPONENT`/ `OPPONENT_5`/ `OPPONENT_10`/ `OPPONENT_20`: /`QUEUE`/ `QUEUE_5`/ `QUEUE_10`/ `QUEUE_20`; Can't be passed together with `price`
-         * @param {string} [closePosition] true, false; Close-All, used with `STOP_MARKET` or `TAKE_PROFIT_MARKET`.
-         * @param {string} [priceProtect] "TRUE" or "FALSE", default "FALSE". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
+         * @param {string} [priceProtect] "true" or "false", default "false". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
          * @param {string} [reduceOnly] "true" or "false". default "false". Cannot be sent in Hedge Mode .
          * @param {number} [activatePrice] Used with `TRAILING_STOP_MARKET` orders, default as the latest price(supporting different `workingType`)
          * @param {number} [callbackRate] Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 5 where 1 for 1%
@@ -1755,14 +1748,13 @@ const TradeApiAxiosParamCreator = function (configuration: ConfigurationRestAPI)
             symbol: string,
             side: NewUmAlgoOrderSideEnum,
             type: NewUmAlgoOrderTypeEnum,
+            quantity: number,
             positionSide?: NewUmAlgoOrderPositionSideEnum,
             timeInForce?: NewUmAlgoOrderTimeInForceEnum,
-            quantity?: number,
             price?: number,
             triggerPrice?: number,
             workingType?: NewUmAlgoOrderWorkingTypeEnum,
             priceMatch?: NewUmAlgoOrderPriceMatchEnum,
-            closePosition?: string,
             priceProtect?: string,
             reduceOnly?: string,
             activatePrice?: number,
@@ -1781,6 +1773,8 @@ const TradeApiAxiosParamCreator = function (configuration: ConfigurationRestAPI)
             assertParamExists('newUmAlgoOrder', 'side', side);
             // verify required parameter 'type' is not null or undefined
             assertParamExists('newUmAlgoOrder', 'type', type);
+            // verify required parameter 'quantity' is not null or undefined
+            assertParamExists('newUmAlgoOrder', 'quantity', quantity);
 
             const localVarQueryParameter: Record<string, unknown> = {};
             const localVarBodyParameter: Record<string, unknown> = {};
@@ -1817,9 +1811,6 @@ const TradeApiAxiosParamCreator = function (configuration: ConfigurationRestAPI)
             }
             if (priceMatch !== undefined && priceMatch !== null) {
                 localVarQueryParameter['priceMatch'] = priceMatch;
-            }
-            if (closePosition !== undefined && closePosition !== null) {
-                localVarQueryParameter['closePosition'] = closePosition;
             }
             if (priceProtect !== undefined && priceProtect !== null) {
                 localVarQueryParameter['priceProtect'] = priceProtect;
@@ -1902,7 +1893,7 @@ const TradeApiAxiosParamCreator = function (configuration: ConfigurationRestAPI)
          * @param {string} [reduceOnly] "true" or "false". default "false". Cannot be sent in Hedge Mode .
          * @param {number} [price]
          * @param {NewUmConditionalOrderWorkingTypeEnum} [workingType] stopPrice triggered by: "MARK_PRICE", "CONTRACT_PRICE". Default "CONTRACT_PRICE"
-         * @param {string} [priceProtect] "TRUE" or "FALSE", default "FALSE". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
+         * @param {string} [priceProtect] "true" or "false", default "false". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
          * @param {string} [newClientStrategyId]
          * @param {number} [stopPrice] Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.
          * @param {number} [activationPrice] Used with `TRAILING_STOP_MARKET` orders, default as the mark price
@@ -4355,12 +4346,6 @@ export interface TradeApiInterface {
      * BUY: `activatePrice` should be smaller than latest price.
      * SELL: `activatePrice` should be larger than latest price.
      *
-     * `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`:
-     * Follow the same rules for condition orders.
-     * If triggered, **close all** current long position( if `SELL`) or current short position( if `BUY`).
-     * Cannot be used with `quantity` paremeter
-     * Cannot be used with `reduceOnly` parameter
-     * In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side
      * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.
      *
      * Weight: 1
@@ -5932,7 +5917,7 @@ export interface NewCmConditionalOrderRequest {
     readonly workingType?: NewCmConditionalOrderWorkingTypeEnum;
 
     /**
-     * "TRUE" or "FALSE", default "FALSE". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
+     * "true" or "false", default "false". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
      * @type {string}
      * @memberof TradeApiNewCmConditionalOrder
      */
@@ -6209,6 +6194,13 @@ export interface NewUmAlgoOrderRequest {
     readonly type: NewUmAlgoOrderTypeEnum;
 
     /**
+     * Order quantity
+     * @type {number}
+     * @memberof TradeApiNewUmAlgoOrder
+     */
+    readonly quantity: number;
+
+    /**
      * Default `BOTH` for One-way Mode ; `LONG` or `SHORT` for Hedge Mode. It must be sent in Hedge Mode.
      * @type {'BOTH' | 'LONG' | 'SHORT'}
      * @memberof TradeApiNewUmAlgoOrder
@@ -6221,13 +6213,6 @@ export interface NewUmAlgoOrderRequest {
      * @memberof TradeApiNewUmAlgoOrder
      */
     readonly timeInForce?: NewUmAlgoOrderTimeInForceEnum;
-
-    /**
-     *
-     * @type {number}
-     * @memberof TradeApiNewUmAlgoOrder
-     */
-    readonly quantity?: number;
 
     /**
      *
@@ -6258,14 +6243,7 @@ export interface NewUmAlgoOrderRequest {
     readonly priceMatch?: NewUmAlgoOrderPriceMatchEnum;
 
     /**
-     * true, false; Close-All, used with `STOP_MARKET` or `TAKE_PROFIT_MARKET`.
-     * @type {string}
-     * @memberof TradeApiNewUmAlgoOrder
-     */
-    readonly closePosition?: string;
-
-    /**
-     * "TRUE" or "FALSE", default "FALSE". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
+     * "true" or "false", default "false". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
      * @type {string}
      * @memberof TradeApiNewUmAlgoOrder
      */
@@ -6397,7 +6375,7 @@ export interface NewUmConditionalOrderRequest {
     readonly workingType?: NewUmConditionalOrderWorkingTypeEnum;
 
     /**
-     * "TRUE" or "FALSE", default "FALSE". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
+     * "true" or "false", default "false". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders
      * @type {string}
      * @memberof TradeApiNewUmConditionalOrder
      */
@@ -8777,12 +8755,6 @@ export class TradeApi implements TradeApiInterface {
      * BUY: `activatePrice` should be smaller than latest price.
      * SELL: `activatePrice` should be larger than latest price.
      *
-     * `STOP_MARKET`, `TAKE_PROFIT_MARKET` with `closePosition`=`true`:
-     * Follow the same rules for condition orders.
-     * If triggered, **close all** current long position( if `SELL`) or current short position( if `BUY`).
-     * Cannot be used with `quantity` paremeter
-     * Cannot be used with `reduceOnly` parameter
-     * In Hedge Mode,cannot be used with `BUY` orders in `LONG` position side. and cannot be used with `SELL` orders in `SHORT` position side
      * `selfTradePreventionMode` is only effective when `timeInForce` set to `IOC` or `GTC` or `GTD`.
      *
      * Weight: 1
@@ -8802,14 +8774,13 @@ export class TradeApi implements TradeApiInterface {
             requestParameters?.symbol,
             requestParameters?.side,
             requestParameters?.type,
+            requestParameters?.quantity,
             requestParameters?.positionSide,
             requestParameters?.timeInForce,
-            requestParameters?.quantity,
             requestParameters?.price,
             requestParameters?.triggerPrice,
             requestParameters?.workingType,
             requestParameters?.priceMatch,
-            requestParameters?.closePosition,
             requestParameters?.priceProtect,
             requestParameters?.reduceOnly,
             requestParameters?.activatePrice,

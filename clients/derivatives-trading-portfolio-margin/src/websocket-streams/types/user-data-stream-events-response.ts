@@ -29,6 +29,9 @@ import type { AccountUpdate } from './account-update';
 import type { AlgoUpdate } from './algo-update';
 // May contain unused imports in some cases
 // @ts-ignore
+import type { AlgoUpdateAo } from './algo-update-ao';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { Balanceupdate } from './balanceupdate';
 // May contain unused imports in some cases
 // @ts-ignore

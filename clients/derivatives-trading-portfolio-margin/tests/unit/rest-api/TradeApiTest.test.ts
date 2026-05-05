@@ -1400,14 +1400,7 @@ describe('TradeApi', () => {
 
     describe('cancelUmAlgoOrder()', () => {
         it('should execute cancelUmAlgoOrder() successfully with required parameters only', async () => {
-            mockResponse = JSONParse(
-                JSONStringify({
-                    algoId: 2146760,
-                    clientAlgoId: '6B2I9XVcJpCjqPAJ4YoFX7',
-                    code: '200',
-                    msg: 'success',
-                })
-            );
+            mockResponse = JSONParse(JSONStringify({ complete: true }));
 
             const spy = jest.spyOn(client, 'cancelUmAlgoOrder').mockReturnValue(
                 Promise.resolve({
@@ -1430,14 +1423,7 @@ describe('TradeApi', () => {
                 recvWindow: 5000,
             };
 
-            mockResponse = JSONParse(
-                JSONStringify({
-                    algoId: 2146760,
-                    clientAlgoId: '6B2I9XVcJpCjqPAJ4YoFX7',
-                    code: '200',
-                    msg: 'success',
-                })
-            );
+            mockResponse = JSONParse(JSONStringify({ complete: true }));
 
             const spy = jest.spyOn(client, 'cancelUmAlgoOrder').mockReturnValue(
                 Promise.resolve({
@@ -3545,6 +3531,7 @@ describe('TradeApi', () => {
                 symbol: 'symbol_example',
                 side: NewUmAlgoOrderSideEnum.BUY,
                 type: NewUmAlgoOrderTypeEnum.LIMIT,
+                quantity: 1.0,
             };
 
             mockResponse = JSONParse(
@@ -3565,7 +3552,6 @@ describe('TradeApi', () => {
                     selfTradePreventionMode: 'EXPIRE_MAKER',
                     workingType: 'CONTRACT_PRICE',
                     priceMatch: 'NONE',
-                    closePosition: false,
                     priceProtect: false,
                     reduceOnly: false,
                     activatePrice: '',
@@ -3597,14 +3583,13 @@ describe('TradeApi', () => {
                 symbol: 'symbol_example',
                 side: NewUmAlgoOrderSideEnum.BUY,
                 type: NewUmAlgoOrderTypeEnum.LIMIT,
+                quantity: 1.0,
                 positionSide: NewUmAlgoOrderPositionSideEnum.BOTH,
                 timeInForce: NewUmAlgoOrderTimeInForceEnum.GTC,
-                quantity: 1.0,
                 price: 1.0,
                 triggerPrice: 1.0,
                 workingType: NewUmAlgoOrderWorkingTypeEnum.MARK_PRICE,
                 priceMatch: NewUmAlgoOrderPriceMatchEnum.NONE,
-                closePosition: 'closePosition_example',
                 priceProtect: 'false',
                 reduceOnly: 'false',
                 activatePrice: 1.0,
@@ -3634,7 +3619,6 @@ describe('TradeApi', () => {
                     selfTradePreventionMode: 'EXPIRE_MAKER',
                     workingType: 'CONTRACT_PRICE',
                     priceMatch: 'NONE',
-                    closePosition: false,
                     priceProtect: false,
                     reduceOnly: false,
                     activatePrice: '',
@@ -3666,6 +3650,7 @@ describe('TradeApi', () => {
                 symbol: 'symbol_example',
                 side: NewUmAlgoOrderSideEnum.BUY,
                 type: NewUmAlgoOrderTypeEnum.LIMIT,
+                quantity: 1.0,
             };
             const params = Object.assign({ ..._params });
             delete params?.algoType;
@@ -3681,6 +3666,7 @@ describe('TradeApi', () => {
                 symbol: 'symbol_example',
                 side: NewUmAlgoOrderSideEnum.BUY,
                 type: NewUmAlgoOrderTypeEnum.LIMIT,
+                quantity: 1.0,
             };
             const params = Object.assign({ ..._params });
             delete params?.symbol;
@@ -3696,6 +3682,7 @@ describe('TradeApi', () => {
                 symbol: 'symbol_example',
                 side: NewUmAlgoOrderSideEnum.BUY,
                 type: NewUmAlgoOrderTypeEnum.LIMIT,
+                quantity: 1.0,
             };
             const params = Object.assign({ ..._params });
             delete params?.side;
@@ -3711,6 +3698,7 @@ describe('TradeApi', () => {
                 symbol: 'symbol_example',
                 side: NewUmAlgoOrderSideEnum.BUY,
                 type: NewUmAlgoOrderTypeEnum.LIMIT,
+                quantity: 1.0,
             };
             const params = Object.assign({ ..._params });
             delete params?.type;
@@ -3720,12 +3708,29 @@ describe('TradeApi', () => {
             );
         });
 
+        it('should throw RequiredError when quantity is missing', async () => {
+            const _params: NewUmAlgoOrderRequest = {
+                algoType: 'algoType_example',
+                symbol: 'symbol_example',
+                side: NewUmAlgoOrderSideEnum.BUY,
+                type: NewUmAlgoOrderTypeEnum.LIMIT,
+                quantity: 1.0,
+            };
+            const params = Object.assign({ ..._params });
+            delete params?.quantity;
+
+            await expect(client.newUmAlgoOrder(params)).rejects.toThrow(
+                'Required parameter quantity was null or undefined when calling newUmAlgoOrder.'
+            );
+        });
+
         it('should throw an error when server is returning an error', async () => {
             const params: NewUmAlgoOrderRequest = {
                 algoType: 'algoType_example',
                 symbol: 'symbol_example',
                 side: NewUmAlgoOrderSideEnum.BUY,
                 type: NewUmAlgoOrderTypeEnum.LIMIT,
+                quantity: 1.0,
             };
 
             const errorResponse = {
@@ -7901,7 +7906,7 @@ describe('TradeApi', () => {
                         qty: '0.010',
                         realizedPnl: '2.58500000',
                         quoteQty: '285.11000',
-                        commission: '-0.11404400',
+                        commission: '0.11404400',
                         commissionAsset: 'USDT',
                         time: 1680688557875,
                         buyer: false,
@@ -7946,7 +7951,7 @@ describe('TradeApi', () => {
                         qty: '0.010',
                         realizedPnl: '2.58500000',
                         quoteQty: '285.11000',
-                        commission: '-0.11404400',
+                        commission: '0.11404400',
                         commissionAsset: 'USDT',
                         time: 1680688557875,
                         buyer: false,

@@ -18,6 +18,7 @@ async function newUmAlgoOrder() {
             symbol: 'symbol_example',
             side: DerivativesTradingPortfolioMarginRestAPI.NewUmAlgoOrderSideEnum.BUY,
             type: DerivativesTradingPortfolioMarginRestAPI.NewUmAlgoOrderTypeEnum.LIMIT,
+            quantity: 1.0,
         });
 
         const rateLimits = response.rateLimits!;

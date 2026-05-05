@@ -1,5 +1,27 @@
 # Changelog
 
+## 14.0.0 - 2026-05-05
+
+### Changed (4)
+
+#### REST API
+
+- Deleted parameter `closePosition`
+  - affected methods:
+    - `newUmAlgoOrder()` (`POST /papi/v1/um/algo/order`)
+- Modified parameter `quantity`:
+  - required: `false` → `true`
+  - affected methods:
+    - `newUmAlgoOrder()` (`POST /papi/v1/um/algo/order`)
+- Modified response for `newUmAlgoOrder()` (`POST /papi/v1/um/algo/order`):
+  - property `closePosition` deleted
+- Modified response for `cancelUmAlgoOrder()` (`DELETE /papi/v1/um/algo/order`):
+  - property `complete` added
+  - property `algoId` deleted
+  - property `clientAlgoId` deleted
+  - property `code` deleted
+  - property `msg` deleted
+
 ## 13.0.0 - 2026-04-20
 
 ### Added (7)
