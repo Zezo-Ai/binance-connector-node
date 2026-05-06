@@ -1,5 +1,18 @@
 # Changelog
 
+## 12.0.0 - 2026-05-06
+
+### Changed (4)
+
+- Update `@binance/common` library to version `2.3.13`.
+- Resolve security vulnerabilities on `axios`.
+- Added parameter `rows`
+  - affected methods:
+    - `getMovePositionHistoryForSubAccount()` (`GET /sapi/v1/sub-account/futures/move-position`)
+- Deleted parameter `row`
+  - affected methods:
+    - `getMovePositionHistoryForSubAccount()` (`GET /sapi/v1/sub-account/futures/move-position`)
+
 ## 11.0.10 - 2026-04-15
 
 ### Changed (2)

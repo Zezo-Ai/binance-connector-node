@@ -249,7 +249,7 @@ const AssetManagementApiAxiosParamCreator = function (configuration: Configurati
          * @summary Get Move Position History for Sub-account (For Master Account) (USER_DATA)
          * @param {string} symbol
          * @param {number | bigint} page Page
-         * @param {number | bigint} row
+         * @param {number | bigint} rows
          * @param {number | bigint} [startTime]
          * @param {number | bigint} [endTime]
          * @param {number | bigint} [recvWindow]
@@ -259,7 +259,7 @@ const AssetManagementApiAxiosParamCreator = function (configuration: Configurati
         getMovePositionHistoryForSubAccount: async (
             symbol: string,
             page: number | bigint,
-            row: number | bigint,
+            rows: number | bigint,
             startTime?: number | bigint,
             endTime?: number | bigint,
             recvWindow?: number | bigint
@@ -268,8 +268,8 @@ const AssetManagementApiAxiosParamCreator = function (configuration: Configurati
             assertParamExists('getMovePositionHistoryForSubAccount', 'symbol', symbol);
             // verify required parameter 'page' is not null or undefined
             assertParamExists('getMovePositionHistoryForSubAccount', 'page', page);
-            // verify required parameter 'row' is not null or undefined
-            assertParamExists('getMovePositionHistoryForSubAccount', 'row', row);
+            // verify required parameter 'rows' is not null or undefined
+            assertParamExists('getMovePositionHistoryForSubAccount', 'rows', rows);
 
             const localVarQueryParameter: Record<string, unknown> = {};
             const localVarBodyParameter: Record<string, unknown> = {};
@@ -286,8 +286,8 @@ const AssetManagementApiAxiosParamCreator = function (configuration: Configurati
             if (page !== undefined && page !== null) {
                 localVarQueryParameter['page'] = page;
             }
-            if (row !== undefined && row !== null) {
-                localVarQueryParameter['row'] = row;
+            if (rows !== undefined && rows !== null) {
+                localVarQueryParameter['rows'] = rows;
             }
             if (recvWindow !== undefined && recvWindow !== null) {
                 localVarQueryParameter['recvWindow'] = recvWindow;
@@ -1876,7 +1876,7 @@ export interface GetMovePositionHistoryForSubAccountRequest {
      * @type {number | bigint}
      * @memberof AssetManagementApiGetMovePositionHistoryForSubAccount
      */
-    readonly row: number | bigint;
+    readonly rows: number | bigint;
 
     /**
      *
@@ -2810,7 +2810,7 @@ export class AssetManagementApi implements AssetManagementApiInterface {
             await this.localVarAxiosParamCreator.getMovePositionHistoryForSubAccount(
                 requestParameters?.symbol,
                 requestParameters?.page,
-                requestParameters?.row,
+                requestParameters?.rows,
                 requestParameters?.startTime,
                 requestParameters?.endTime,
                 requestParameters?.recvWindow

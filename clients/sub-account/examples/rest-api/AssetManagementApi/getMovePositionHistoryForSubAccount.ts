@@ -12,7 +12,7 @@ async function getMovePositionHistoryForSubAccount() {
         const response = await client.restAPI.getMovePositionHistoryForSubAccount({
             symbol: 'symbol_example',
             page: 789,
-            row: 789,
+            rows: 789,
         });
 
         const rateLimits = response.rateLimits!;

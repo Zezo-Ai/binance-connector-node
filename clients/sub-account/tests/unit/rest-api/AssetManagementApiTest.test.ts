@@ -746,7 +746,7 @@ describe('AssetManagementApi', () => {
             const params: GetMovePositionHistoryForSubAccountRequest = {
                 symbol: 'symbol_example',
                 page: 789,
-                row: 789,
+                rows: 789,
             };
 
             mockResponse = JSONParse(
@@ -808,7 +808,7 @@ describe('AssetManagementApi', () => {
             const params: GetMovePositionHistoryForSubAccountRequest = {
                 symbol: 'symbol_example',
                 page: 789,
-                row: 789,
+                rows: 789,
                 startTime: 1623319461670,
                 endTime: 1641782889000,
                 recvWindow: 5000,
@@ -873,7 +873,7 @@ describe('AssetManagementApi', () => {
             const _params: GetMovePositionHistoryForSubAccountRequest = {
                 symbol: 'symbol_example',
                 page: 789,
-                row: 789,
+                rows: 789,
             };
             const params = Object.assign({ ..._params });
             delete params?.symbol;
@@ -887,7 +887,7 @@ describe('AssetManagementApi', () => {
             const _params: GetMovePositionHistoryForSubAccountRequest = {
                 symbol: 'symbol_example',
                 page: 789,
-                row: 789,
+                rows: 789,
             };
             const params = Object.assign({ ..._params });
             delete params?.page;
@@ -897,17 +897,17 @@ describe('AssetManagementApi', () => {
             );
         });
 
-        it('should throw RequiredError when row is missing', async () => {
+        it('should throw RequiredError when rows is missing', async () => {
             const _params: GetMovePositionHistoryForSubAccountRequest = {
                 symbol: 'symbol_example',
                 page: 789,
-                row: 789,
+                rows: 789,
             };
             const params = Object.assign({ ..._params });
-            delete params?.row;
+            delete params?.rows;
 
             await expect(client.getMovePositionHistoryForSubAccount(params)).rejects.toThrow(
-                'Required parameter row was null or undefined when calling getMovePositionHistoryForSubAccount.'
+                'Required parameter rows was null or undefined when calling getMovePositionHistoryForSubAccount.'
             );
         });
 
@@ -915,7 +915,7 @@ describe('AssetManagementApi', () => {
             const params: GetMovePositionHistoryForSubAccountRequest = {
                 symbol: 'symbol_example',
                 page: 789,
-                row: 789,
+                rows: 789,
             };
 
             const errorResponse = {
