@@ -19,6 +19,7 @@
 import { WebsocketAPIBase, WebsocketApiResponse, WebsocketSendMsgOptions } from '@binance/common';
 import type {
     AvgPriceResponse,
+    BlockTradesHistoricalResponse,
     DepthResponse,
     KlinesResponse,
     ReferencePriceCalculationResponse,
@@ -51,6 +52,20 @@ export interface MarketApiInterface {
      * @memberof MarketApiInterface
      */
     avgPrice(requestParameters: AvgPriceRequest): Promise<WebsocketApiResponse<AvgPriceResponse>>;
+
+    /**
+     * Get block trades.
+     * Weight: 25
+     *
+     * @summary WebSocket Historical Block Trades
+     * @param {BlockTradesHistoricalRequest} requestParameters Request parameters.
+     *
+     * @returns {Promise<BlockTradesHistoricalResponse>}
+     * @memberof MarketApiInterface
+     */
+    blockTradesHistorical(
+        requestParameters: BlockTradesHistoricalRequest
+    ): Promise<WebsocketApiResponse<BlockTradesHistoricalResponse>>;
 
     /**
      * Get current order book.
@@ -332,6 +347,40 @@ export interface AvgPriceRequest {
      * @memberof MarketApiAvgPrice
      */
     readonly id?: string;
+}
+
+/**
+ * Request parameters for blockTradesHistorical operation in MarketApi.
+ * @interface BlockTradesHistoricalRequest
+ */
+export interface BlockTradesHistoricalRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof MarketApiBlockTradesHistorical
+     */
+    readonly symbol: string;
+
+    /**
+     * Block trade ID to fetch from
+     * @type {number | bigint}
+     * @memberof MarketApiBlockTradesHistorical
+     */
+    readonly fromId: number | bigint;
+
+    /**
+     * Unique WebSocket request ID.
+     * @type {string}
+     * @memberof MarketApiBlockTradesHistorical
+     */
+    readonly id?: string;
+
+    /**
+     * Default: 500; Maximum: 1000
+     * @type {number | bigint}
+     * @memberof MarketApiBlockTradesHistorical
+     */
+    readonly limit?: number | bigint;
 }
 
 /**
@@ -866,6 +915,26 @@ export class MarketApi implements MarketApiInterface {
     ): Promise<WebsocketApiResponse<AvgPriceResponse>> {
         return this.websocketBase.sendMessage<AvgPriceResponse>(
             '/avgPrice'.slice(1),
+            requestParameters as unknown as WebsocketSendMsgOptions,
+            { isSigned: false, withApiKey: false }
+        );
+    }
+
+    /**
+     * Get block trades.
+     * Weight: 25
+     *
+     * @summary WebSocket Historical Block Trades
+     * @param {BlockTradesHistoricalRequest} requestParameters Request parameters.
+     * @returns {Promise<BlockTradesHistoricalResponse>}
+     * @memberof MarketApi
+     * @see {@link https://developers.binance.com/docs/binance-spot-api-docs/websocket-api/market-data-requests#historical-block-trades Binance API Documentation}
+     */
+    public blockTradesHistorical(
+        requestParameters: BlockTradesHistoricalRequest
+    ): Promise<WebsocketApiResponse<BlockTradesHistoricalResponse>> {
+        return this.websocketBase.sendMessage<BlockTradesHistoricalResponse>(
+            '/blockTrades.historical'.slice(1),
             requestParameters as unknown as WebsocketSendMsgOptions,
             { isSigned: false, withApiKey: false }
         );

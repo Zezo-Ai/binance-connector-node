@@ -611,7 +611,7 @@ const AccountApiAxiosParamCreator = function (configuration: ConfigurationRestAP
          * @param {string} symbol
          * @param {number | bigint} orderId
          * @param {number | bigint} [fromExecutionId]
-         * @param {number | bigint} [limit] Default:500; Maximum: 1000
+         * @param {number | bigint} [limit] Default: 500; Maximum: 1000
          * @param {number} [recvWindow] The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.
          *
          * @throws {RequiredError}
@@ -1305,7 +1305,7 @@ export interface OrderAmendmentsRequest {
     readonly fromExecutionId?: number | bigint;
 
     /**
-     * Default:500; Maximum: 1000
+     * Default: 500; Maximum: 1000
      * @type {number | bigint}
      * @memberof AccountApiOrderAmendments
      */

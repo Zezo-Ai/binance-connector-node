@@ -18,6 +18,8 @@ export * from './asset-filters';
 export * from './avg-price-response';
 export * from './avg-price-response-result';
 export * from './balance-update';
+export * from './block-trades-historical-response';
+export * from './block-trades-historical-response-result-inner';
 export * from './depth-response';
 export * from './depth-response-result';
 export * from './event-stream-terminated';

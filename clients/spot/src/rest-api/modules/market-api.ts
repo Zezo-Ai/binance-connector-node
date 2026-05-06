@@ -29,6 +29,7 @@ import type {
     AvgPriceResponse,
     DepthResponse,
     GetTradesResponse,
+    HistoricalBlockTradesResponse,
     HistoricalTradesResponse,
     KlinesResponse,
     ReferencePriceCalculationResponse,
@@ -209,6 +210,51 @@ const MarketApiAxiosParamCreator = function (configuration: ConfigurationRestAPI
 
             return {
                 endpoint: '/api/v3/trades',
+                method: 'GET',
+                queryParams: localVarQueryParameter,
+                bodyParams: localVarBodyParameter,
+                timeUnit: _timeUnit,
+            };
+        },
+        /**
+         * Get block trades.
+         * Weight: 25
+         *
+         * @summary Historical Block Trades
+         * @param {string} symbol
+         * @param {number | bigint} fromId Block trade ID to fetch from
+         * @param {number | bigint} [limit] Default: 500; Maximum: 1000
+         *
+         * @throws {RequiredError}
+         */
+        historicalBlockTrades: async (
+            symbol: string,
+            fromId: number | bigint,
+            limit?: number | bigint
+        ): Promise<RequestArgs> => {
+            // verify required parameter 'symbol' is not null or undefined
+            assertParamExists('historicalBlockTrades', 'symbol', symbol);
+            // verify required parameter 'fromId' is not null or undefined
+            assertParamExists('historicalBlockTrades', 'fromId', fromId);
+
+            const localVarQueryParameter: Record<string, unknown> = {};
+            const localVarBodyParameter: Record<string, unknown> = {};
+
+            if (symbol !== undefined && symbol !== null) {
+                localVarQueryParameter['symbol'] = symbol;
+            }
+            if (fromId !== undefined && fromId !== null) {
+                localVarQueryParameter['fromId'] = fromId;
+            }
+            if (limit !== undefined && limit !== null) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            let _timeUnit: TimeUnit | undefined;
+            if ('timeUnit' in configuration) _timeUnit = configuration.timeUnit as TimeUnit;
+
+            return {
+                endpoint: '/api/v3/historicalBlockTrades',
                 method: 'GET',
                 queryParams: localVarQueryParameter,
                 bodyParams: localVarBodyParameter,
@@ -819,6 +865,19 @@ export interface MarketApiInterface {
      */
     getTrades(requestParameters: GetTradesRequest): Promise<RestApiResponse<GetTradesResponse>>;
     /**
+     * Get block trades.
+     * Weight: 25
+     *
+     * @summary Historical Block Trades
+     * @param {HistoricalBlockTradesRequest} requestParameters Request parameters.
+     *
+     * @throws {RequiredError | ConnectorClientError | UnauthorizedError | ForbiddenError | TooManyRequestsError | RateLimitBanError | ServerError | NotFoundError | NetworkError | BadRequestError}
+     * @memberof MarketApiInterface
+     */
+    historicalBlockTrades(
+        requestParameters: HistoricalBlockTradesRequest
+    ): Promise<RestApiResponse<HistoricalBlockTradesResponse>>;
+    /**
      * Get older trades.
      * Weight: 25
      *
@@ -1128,6 +1187,33 @@ export interface GetTradesRequest {
      * @memberof MarketApiGetTrades
      */
     readonly limit?: number;
+}
+
+/**
+ * Request parameters for historicalBlockTrades operation in MarketApi.
+ * @interface HistoricalBlockTradesRequest
+ */
+export interface HistoricalBlockTradesRequest {
+    /**
+     *
+     * @type {string}
+     * @memberof MarketApiHistoricalBlockTrades
+     */
+    readonly symbol: string;
+
+    /**
+     * Block trade ID to fetch from
+     * @type {number | bigint}
+     * @memberof MarketApiHistoricalBlockTrades
+     */
+    readonly fromId: number | bigint;
+
+    /**
+     * Default: 500; Maximum: 1000
+     * @type {number | bigint}
+     * @memberof MarketApiHistoricalBlockTrades
+     */
+    readonly limit?: number | bigint;
 }
 
 /**
@@ -1583,6 +1669,36 @@ export class MarketApi implements MarketApiInterface {
             requestParameters?.limit
         );
         return sendRequest<GetTradesResponse>(
+            this.configuration,
+            localVarAxiosArgs.endpoint,
+            localVarAxiosArgs.method,
+            localVarAxiosArgs.queryParams,
+            localVarAxiosArgs.bodyParams,
+            localVarAxiosArgs?.timeUnit,
+            { isSigned: false }
+        );
+    }
+
+    /**
+     * Get block trades.
+     * Weight: 25
+     *
+     * @summary Historical Block Trades
+     * @param {HistoricalBlockTradesRequest} requestParameters Request parameters.
+     * @returns {Promise<RestApiResponse<HistoricalBlockTradesResponse>>}
+     * @throws {RequiredError | ConnectorClientError | UnauthorizedError | ForbiddenError | TooManyRequestsError | RateLimitBanError | ServerError | NotFoundError | NetworkError | BadRequestError}
+     * @memberof MarketApi
+     * @see {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#historical-block-trades Binance API Documentation}
+     */
+    public async historicalBlockTrades(
+        requestParameters: HistoricalBlockTradesRequest
+    ): Promise<RestApiResponse<HistoricalBlockTradesResponse>> {
+        const localVarAxiosArgs = await this.localVarAxiosParamCreator.historicalBlockTrades(
+            requestParameters?.symbol,
+            requestParameters?.fromId,
+            requestParameters?.limit
+        );
+        return sendRequest<HistoricalBlockTradesResponse>(
             this.configuration,
             localVarAxiosArgs.endpoint,
             localVarAxiosArgs.method,

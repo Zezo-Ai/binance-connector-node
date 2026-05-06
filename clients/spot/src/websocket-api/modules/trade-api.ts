@@ -598,7 +598,7 @@ export interface OrderCancelReplaceRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderCancelReplace
      */
     readonly selfTradePreventionMode?: OrderCancelReplaceSelfTradePreventionModeEnum;
@@ -835,7 +835,7 @@ export interface OrderListPlaceRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderListPlace
      */
     readonly selfTradePreventionMode?: OrderListPlaceSelfTradePreventionModeEnum;
@@ -1065,7 +1065,7 @@ export interface OrderListPlaceOcoRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderListPlaceOco
      */
     readonly selfTradePreventionMode?: OrderListPlaceOcoSelfTradePreventionModeEnum;
@@ -1155,7 +1155,7 @@ export interface OrderListPlaceOpoRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderListPlaceOpo
      */
     readonly selfTradePreventionMode?: OrderListPlaceOpoSelfTradePreventionModeEnum;
@@ -1378,7 +1378,7 @@ export interface OrderListPlaceOpocoRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderListPlaceOpoco
      */
     readonly selfTradePreventionMode?: OrderListPlaceOpocoSelfTradePreventionModeEnum;
@@ -1692,7 +1692,7 @@ export interface OrderListPlaceOtoRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderListPlaceOto
      */
     readonly selfTradePreventionMode?: OrderListPlaceOtoSelfTradePreventionModeEnum;
@@ -1922,7 +1922,7 @@ export interface OrderListPlaceOtocoRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderListPlaceOtoco
      */
     readonly selfTradePreventionMode?: OrderListPlaceOtocoSelfTradePreventionModeEnum;
@@ -2265,7 +2265,7 @@ export interface OrderPlaceRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderPlace
      */
     readonly selfTradePreventionMode?: OrderPlaceSelfTradePreventionModeEnum;
@@ -2420,7 +2420,7 @@ export interface OrderTestRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiOrderTest
      */
     readonly selfTradePreventionMode?: OrderTestSelfTradePreventionModeEnum;
@@ -2547,7 +2547,7 @@ export interface SorOrderPlaceRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiSorOrderPlace
      */
     readonly selfTradePreventionMode?: SorOrderPlaceSelfTradePreventionModeEnum;
@@ -2659,7 +2659,7 @@ export interface SorOrderTestRequest {
 
     /**
      *
-     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'NON_REPRESENTABLE'}
+     * @type {'NONE' | 'EXPIRE_TAKER' | 'EXPIRE_MAKER' | 'EXPIRE_BOTH' | 'DECREMENT' | 'TRANSFER' | 'NON_REPRESENTABLE'}
      * @memberof TradeApiSorOrderTest
      */
     readonly selfTradePreventionMode?: SorOrderTestSelfTradePreventionModeEnum;
@@ -3102,6 +3102,7 @@ export enum OrderCancelReplaceSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3153,6 +3154,7 @@ export enum OrderListPlaceSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3220,6 +3222,7 @@ export enum OrderListPlaceOcoSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3262,6 +3265,7 @@ export enum OrderListPlaceOpoSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3332,6 +3336,7 @@ export enum OrderListPlaceOpocoSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3426,6 +3431,7 @@ export enum OrderListPlaceOtoSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3496,6 +3502,7 @@ export enum OrderListPlaceOtocoSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3588,6 +3595,7 @@ export enum OrderPlaceSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3639,6 +3647,7 @@ export enum OrderTestSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3690,6 +3699,7 @@ export enum SorOrderPlaceSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }
 
@@ -3730,5 +3740,6 @@ export enum SorOrderTestSelfTradePreventionModeEnum {
     EXPIRE_MAKER = 'EXPIRE_MAKER',
     EXPIRE_BOTH = 'EXPIRE_BOTH',
     DECREMENT = 'DECREMENT',
+    TRANSFER = 'TRANSFER',
     NON_REPRESENTABLE = 'NON_REPRESENTABLE',
 }

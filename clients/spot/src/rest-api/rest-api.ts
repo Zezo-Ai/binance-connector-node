@@ -44,6 +44,7 @@ import type {
     AvgPriceRequest,
     DepthRequest,
     GetTradesRequest,
+    HistoricalBlockTradesRequest,
     HistoricalTradesRequest,
     KlinesRequest,
     ReferencePriceRequest,
@@ -95,6 +96,7 @@ import type {
     AvgPriceResponse,
     DepthResponse,
     GetTradesResponse,
+    HistoricalBlockTradesResponse,
     HistoricalTradesResponse,
     KlinesResponse,
     ReferencePriceResponse,
@@ -570,6 +572,23 @@ export class RestAPI {
      */
     getTrades(requestParameters: GetTradesRequest): Promise<RestApiResponse<GetTradesResponse>> {
         return this.marketApi.getTrades(requestParameters);
+    }
+
+    /**
+     * Get block trades.
+     * Weight: 25
+     *
+     * @summary Historical Block Trades
+     * @param {HistoricalBlockTradesRequest} requestParameters Request parameters.
+     *
+     * @returns {Promise<RestApiResponse<HistoricalBlockTradesResponse>>}
+     * @throws {RequiredError | ConnectorClientError | UnauthorizedError | ForbiddenError | TooManyRequestsError | RateLimitBanError | ServerError | NotFoundError | NetworkError | BadRequestError}
+     * @see {@link https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints#historical-block-trades Binance API Documentation}
+     */
+    historicalBlockTrades(
+        requestParameters: HistoricalBlockTradesRequest
+    ): Promise<RestApiResponse<HistoricalBlockTradesResponse>> {
+        return this.marketApi.historicalBlockTrades(requestParameters);
     }
 
     /**

@@ -37,6 +37,8 @@ export * from './get-order-list-response';
 export * from './get-order-list-response-orders-inner';
 export * from './get-order-response';
 export * from './get-trades-response';
+export * from './historical-block-trades-response';
+export * from './historical-block-trades-response-inner';
 export * from './historical-trades-response';
 export * from './historical-trades-response-inner';
 export * from './iceberg-parts-filter';

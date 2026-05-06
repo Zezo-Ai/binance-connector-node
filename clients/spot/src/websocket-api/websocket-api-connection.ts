@@ -61,6 +61,7 @@ import type {
 } from './modules/general-api';
 import type {
     AvgPriceRequest,
+    BlockTradesHistoricalRequest,
     DepthRequest,
     KlinesRequest,
     ReferencePriceRequest,
@@ -124,6 +125,7 @@ import type {
 } from './types';
 import type {
     AvgPriceResponse,
+    BlockTradesHistoricalResponse,
     DepthResponse,
     KlinesResponse,
     ReferencePriceResponse,
@@ -638,6 +640,22 @@ export class WebsocketAPIConnection {
      */
     avgPrice(requestParameters: AvgPriceRequest): Promise<WebsocketApiResponse<AvgPriceResponse>> {
         return this.marketApi.avgPrice(requestParameters);
+    }
+
+    /**
+     * Get block trades.
+     * Weight: 25
+     *
+     * @summary WebSocket Historical Block Trades
+     * @param {BlockTradesHistoricalRequest} requestParameters Request parameters.
+     *
+     * @returns Promise<WebsocketApiResponse<BlockTradesHistoricalResponse>>
+     * @see {@link https://developers.binance.com/docs/binance-spot-api-docs/websocket-api/market-data-requests#historical-block-trades Binance API Documentation}
+     */
+    blockTradesHistorical(
+        requestParameters: BlockTradesHistoricalRequest
+    ): Promise<WebsocketApiResponse<BlockTradesHistoricalResponse>> {
+        return this.marketApi.blockTradesHistorical(requestParameters);
     }
 
     /**

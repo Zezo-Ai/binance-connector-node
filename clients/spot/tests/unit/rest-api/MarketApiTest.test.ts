@@ -41,6 +41,7 @@ import {
     AvgPriceRequest,
     DepthRequest,
     GetTradesRequest,
+    HistoricalBlockTradesRequest,
     HistoricalTradesRequest,
     KlinesRequest,
     ReferencePriceRequest,
@@ -57,6 +58,7 @@ import type {
     AvgPriceResponse,
     DepthResponse,
     GetTradesResponse,
+    HistoricalBlockTradesResponse,
     HistoricalTradesResponse,
     KlinesResponse,
     ReferencePriceCalculationResponse,
@@ -452,6 +454,123 @@ describe('MarketApi', () => {
             mockError.response = { status: 400, data: errorResponse };
             const spy = jest.spyOn(client, 'getTrades').mockRejectedValueOnce(mockError);
             await expect(client.getTrades(params)).rejects.toThrow('ResponseError');
+            spy.mockRestore();
+        });
+    });
+
+    describe('historicalBlockTrades()', () => {
+        it('should execute historicalBlockTrades() successfully with required parameters only', async () => {
+            const params: HistoricalBlockTradesRequest = {
+                symbol: 'BNBUSDT',
+                fromId: 1,
+            };
+
+            mockResponse = JSONParse(
+                JSONStringify([
+                    {
+                        id: 582,
+                        price: '0.052',
+                        qty: '5838',
+                        quoteQty: '303.576',
+                        time: 1772506983321,
+                        isBuyerMaker: true,
+                    },
+                ])
+            );
+
+            const spy = jest.spyOn(client, 'historicalBlockTrades').mockReturnValue(
+                Promise.resolve({
+                    data: () => Promise.resolve(mockResponse),
+                    status: 200,
+                    headers: {},
+                    rateLimits: [],
+                } as RestApiResponse<HistoricalBlockTradesResponse>)
+            );
+            const response = await client.historicalBlockTrades(params);
+            expect(response).toBeDefined();
+            await expect(response.data()).resolves.toBe(mockResponse);
+            spy.mockRestore();
+        });
+
+        it('should execute historicalBlockTrades() successfully with optional parameters', async () => {
+            const params: HistoricalBlockTradesRequest = {
+                symbol: 'BNBUSDT',
+                fromId: 1,
+                limit: 500,
+            };
+
+            mockResponse = JSONParse(
+                JSONStringify([
+                    {
+                        id: 582,
+                        price: '0.052',
+                        qty: '5838',
+                        quoteQty: '303.576',
+                        time: 1772506983321,
+                        isBuyerMaker: true,
+                    },
+                ])
+            );
+
+            const spy = jest.spyOn(client, 'historicalBlockTrades').mockReturnValue(
+                Promise.resolve({
+                    data: () => Promise.resolve(mockResponse),
+                    status: 200,
+                    headers: {},
+                    rateLimits: [],
+                } as RestApiResponse<HistoricalBlockTradesResponse>)
+            );
+            const response = await client.historicalBlockTrades(params);
+            expect(response).toBeDefined();
+            await expect(response.data()).resolves.toBe(mockResponse);
+            spy.mockRestore();
+        });
+
+        it('should throw RequiredError when symbol is missing', async () => {
+            const _params: HistoricalBlockTradesRequest = {
+                symbol: 'BNBUSDT',
+                fromId: 1,
+            };
+            const params = Object.assign({ ..._params });
+            delete params?.symbol;
+
+            await expect(client.historicalBlockTrades(params)).rejects.toThrow(
+                'Required parameter symbol was null or undefined when calling historicalBlockTrades.'
+            );
+        });
+
+        it('should throw RequiredError when fromId is missing', async () => {
+            const _params: HistoricalBlockTradesRequest = {
+                symbol: 'BNBUSDT',
+                fromId: 1,
+            };
+            const params = Object.assign({ ..._params });
+            delete params?.fromId;
+
+            await expect(client.historicalBlockTrades(params)).rejects.toThrow(
+                'Required parameter fromId was null or undefined when calling historicalBlockTrades.'
+            );
+        });
+
+        it('should throw an error when server is returning an error', async () => {
+            const params: HistoricalBlockTradesRequest = {
+                symbol: 'BNBUSDT',
+                fromId: 1,
+            };
+
+            const errorResponse = {
+                code: -1111,
+                msg: 'Server Error',
+            };
+
+            const mockError = new Error('ResponseError') as Error & {
+                response?: { status: number; data: unknown };
+            };
+            mockError.response = { status: 400, data: errorResponse };
+            const spy = jest
+                .spyOn(client, 'historicalBlockTrades')
+                .mockRejectedValueOnce(mockError);
+            await expect(client.historicalBlockTrades(params)).rejects.toThrow('ResponseError');
             spy.mockRestore();
         });
     });
